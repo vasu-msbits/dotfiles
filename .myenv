@@ -1,0 +1,10 @@
+
+alias ll='ls --color -ltr'
+alias nvi='nvim '
+#export PS1='[%d]» '
+#export PS1='%{$fg[$green]%}[%d]» %{$reset_color%} '
+
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/gocode
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
