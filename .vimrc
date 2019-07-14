@@ -44,7 +44,7 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
+let mapleader = "\<Space>"
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -128,6 +128,7 @@ endif
 
 
 " Add a bit extra margin to the left
+set nu
 set foldcolumn=1
 
 
@@ -208,13 +209,13 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
+" Windows - Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -261,13 +262,16 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 
 """"""""""""""""""""""""""""""
-" => Status line
+" => Status line - Deprecated due to airline plugin; see init.vim
 """"""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
+if !has('nvim')
+	set ttymouse=xterm2
+	" Always show the status line
+	set laststatus=2
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+	" Format the status line
+	set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -399,4 +403,47 @@ endif
 if has('nvim')
 tnoremap tt <C-\><C-n>
 endif
+
+"NETRW Interface mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" The default listing style I like, one file per line with file size and time stamp
+let g:netrw_banner = 0
+let g:netrw_liststyle     =3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+" Directories on the top, files below
+let g:netrw_sort_sequence ='[\/]$,*'
+
+" Keep the cursor in the netrw window
+let g:netrw_preview       =1
+
+" Open files in vertical
+let g:netrw_altv          =1
+
+" Allow netrw to remove non-empty local directories
+let g:netrw_localrmdir    ='rm -r'
+
+" Invoking netrw in a split vertical window
+"nnoremap <Leader><Space> :Vex<CR>
+
+" Move next in the buffer of files
+"nnoremap <Space> :bnext<CR>
+" Move back in the buffer of files
+"nnoremap <Bs> :bprev<CR>
+
+" Invoke newtrw in the current directory
+nnoremap <Leader>- :E<CR>
+
+" Go up in the directories
+nnoremap <Plug>(NetrwUp) :e.<CR>
+if empty(maparg('-', 'n'))
+  nmap - <Plug>(NetrwUp)
+endif
+
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
 
