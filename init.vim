@@ -15,6 +15,7 @@ call plug#begin()
 "	Plug 'bling/vim-airline'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'Lenovsky/nuake'
 call plug#end()
 
 "Plugin specific settings
