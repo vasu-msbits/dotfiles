@@ -45,6 +45,11 @@ set autoread
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = "\<Space>"
+"New mac does not have physical ESC key so map a physical key for the same :-(
+"So i will put to insert mode and leader-i will put you back to command mode
+":inoremap <leader>i <Esc>
+:nmap `` <nop>
+:imap `` <Esc>
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -179,6 +184,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 "set expandtab
+set noexpandtab
 
 " Be smart when using tabs ;)
 set smarttab
@@ -195,6 +201,8 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+:nmap <Leader>sl :set list!<CR>
+set listchars=tab:▸\ ,eol:¬,trail:~,nbsp:%,extends:>,precedes:<
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -227,8 +235,12 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map <leader>n :bnext<cr>
+map <leader><right> :bnext<cr>
+"nnoremap <C-N> :bnext<CR>
+map <leader>p :bprevious<cr>
+map <leader><left> :bnext<cr>
+"nnoremap <C-P> :bprev<CR>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -333,7 +345,7 @@ map <leader>q :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+"map <leader>pp :setlocal paste!<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

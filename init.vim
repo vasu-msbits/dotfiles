@@ -5,6 +5,7 @@ let &packpath = &runtimepath
 call plug#begin()
 	Plug 'majutsushi/tagbar'
 	Plug 'scrooloose/nerdtree'
+	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
 	Plug 'junegunn/fzf'
@@ -15,7 +16,7 @@ call plug#begin()
 "	Plug 'bling/vim-airline'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-	Plug 'Lenovsky/nuake'
+"	Plug 'Lenovsky/nuake'
 call plug#end()
 
 "Plugin specific settings
