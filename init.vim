@@ -27,7 +27,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:deoplete#enable_at_startup = 1
 
-nnoremap <C-n>t :NERDTreeToggle<CR>
+"nnoremap <C-n>t :NERDTreeToggle<CR>
 
 "Load regular vimrc script
 source ~/.vimrc

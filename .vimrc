@@ -32,6 +32,12 @@ set mouse-=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"New mac does not have physical ESC key so map a physical key for the same :-(
+"So i will put to insert mode and leader-i will put you back to command mode
+":inoremap <leader>i <Esc>
+:nmap `` <nop>
+:imap `` <Esc>
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -45,18 +51,16 @@ set autoread
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = "\<Space>"
-"New mac does not have physical ESC key so map a physical key for the same :-(
-"So i will put to insert mode and leader-i will put you back to command mode
-":inoremap <leader>i <Esc>
-:nmap `` <nop>
-:imap `` <Esc>
-
 " Fast saving
 nmap <leader>w :w!<cr>
-
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
+" :W sudo saves the file (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
+
+"All frequent commands using custom leader
+:nmap <Leader>ll :set list!<CR>
+:nmap <Leader>nn :set nu!<CR>
+:nmap <Leader>pp :set paste!<CR>
+:nmap <Leader>xx :set 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -133,7 +137,7 @@ endif
 
 
 " Add a bit extra margin to the left
-set nu
+"set nu
 set foldcolumn=1
 
 
@@ -201,8 +205,11 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-:nmap <Leader>sl :set list!<CR>
 set listchars=tab:▸\ ,eol:¬,trail:~,nbsp:%,extends:>,precedes:<
+
+"Indent the inner object
+nnoremap <Leader>= =i{
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -235,12 +242,13 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-map <leader>n :bnext<cr>
-map <leader><right> :bnext<cr>
+"map <leader>n :bnext<cr>
 "nnoremap <C-N> :bnext<CR>
-map <leader>p :bprevious<cr>
-map <leader><left> :bnext<cr>
+map <leader><right> :bnext<cr>
+"map <leader>p :bprevious<cr>
 "nnoremap <C-P> :bprev<CR>
+map <leader><left> :bprevious<cr>
+map <leader>c :Bclose<cr>:bnext<cr>gT
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -339,10 +347,10 @@ map <leader>s? z=
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+"map <leader>q :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+map <leader>b :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 "map <leader>pp :setlocal paste!<cr>
@@ -458,4 +466,7 @@ endif
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
+
+"NerdTree Toggle
+nnoremap <Leader><Up> :NERDTreeToggle<CR>
 
