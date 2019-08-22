@@ -11,6 +11,7 @@ set mouse-=a
 "           https://github.com/amix/vimrc
 "
 " Sections:
+"    -> Packages
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -27,7 +28,22 @@ set mouse-=a
 "    -> Terminal Emulation functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Packages
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim')
+	"for NVIM ~/.config/nvim/init.vim has the packages listed
+	tnoremap tt <C-\><C-n>
+else
+	"for VIM ~/.vimplugrc has the packages listed
+	set ttymouse=xterm2
+	" Always show the status line
+	set laststatus=2
 
+	" Format the status line
+	"set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+	source	~/.vimplugrc
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -148,9 +164,13 @@ set foldcolumn=1
 syntax enable 
 
 " Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+"Always try 256
+set t_Co=256
+"if $COLORTERM == 'gnome-terminal'
+"    set t_Co=256
+"elseif $TERM == 'xterm'
+"    set t_Co=256
+"endif
 
 try
     colorscheme desert
@@ -281,22 +301,13 @@ endtry
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
-""""""""""""""""""""""""""""""
-" => Status line - Deprecated due to airline plugin; see init.vim
-""""""""""""""""""""""""""""""
-if !has('nvim')
-	set ttymouse=xterm2
-	" Always show the status line
-	set laststatus=2
-
-	" Format the status line
-	set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Auto complete
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -409,20 +420,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-
-" NVIM 
-if !has('nvim')
-	set ttymouse=xterm2
-endif
-
-
-" => Terminal Emulation functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Returns true if paste mode is enabled
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-tnoremap tt <C-\><C-n>
-endif
 
 "NETRW Interface mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
