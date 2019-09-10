@@ -29,13 +29,12 @@ set mouse-=a
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Packages
+"=> Packages/Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-	"for NVIM ~/.config/nvim/init.vim has the packages listed
-	tnoremap tt <C-\><C-n>
-else
-	"for VIM ~/.vimplugrc has the packages listed
+"Load Packages
+"for NVIM ~/.config/nvim/init.vim has the packages listed
+if !has('nvim')
+"for VIM ~/.vimplugrc has the packages listed
 	set ttymouse=xterm2
 	" Always show the status line
 	set laststatus=2
@@ -45,6 +44,8 @@ else
 	source	~/.vimplugrc
 endif
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +54,7 @@ endif
 ":inoremap <leader>i <Esc>
 :nmap `` <nop>
 :imap `` <Esc>
+tnoremap tt <C-\><C-n>
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -466,4 +468,45 @@ endif
 
 "NerdTree Toggle
 nnoremap <Leader><Up> :NERDTreeToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"==> Plugin specific settings
+"""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline_theme='random'
+let g:AirlineRefresh=1
+let g:deoplete#enable_at_startup = 1
+
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+let g:airline_symbols = {}
+" airline symbols
+"let g:airline_symbols.space = "\ua0"
+let g:airline_left_sep = '>'
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = '<'
+let g:airline_right_alt_sep = '|'
+let g:airline_symbols.readonly = 'R'
+let g:airline_symbols.linenr = '#'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '▸'
+let g:airline_symbols.paste = 'P'
+let g:airline_symbols.whitespace = 'Ξ'
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+"let g:airline_symbols.linenr = '¶'
+
+" set font for GUI vim
+if has("gui_running")
+    if has("win32")
+      set guifont=Hack:h9:cANSI:qDRAFT
+    else
+      set guifont=Hack\ 11
+    endif
+endif
 
