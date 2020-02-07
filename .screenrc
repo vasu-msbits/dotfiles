@@ -15,7 +15,7 @@ hardstatus alwayslastline
 hardstatus string "%{.kW}%-w%{.bW}%t [%n]%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %c"
 
 # Setup screens
-chdir /home/vagrant/Sites # All screens start in ~/Sites folder
+#chdir /home/vagrant/Sites # All screens start in ~/Sites folder
 screen -t 'cons' 0 bash # Make first screen for running server
 screen -t 'code' 1 bash # Make screen for running tests
 screen -t 'work' 2 bash # Make screen for general work i.e. running git commands
