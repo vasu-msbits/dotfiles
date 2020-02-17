@@ -29,13 +29,16 @@ set mouse-=a
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Packages
+"=> Packages/Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Load Packages
+"for NVIM ~/.config/nvim/init.vim has the packages listed
 if has('nvim')
-	"for NVIM ~/.config/nvim/init.vim has the packages listed
-	tnoremap tt <C-\><C-n>
+	set laststatus=0
+	set statusline=
+	set noruler
 else
-	"for VIM ~/.vimplugrc has the packages listed
+"for VIM ~/.vimplugrc has the packages listed
 	set ttymouse=xterm2
 	" Always show the status line
 	set laststatus=2
@@ -45,6 +48,8 @@ else
 	source	~/.vimplugrc
 endif
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -53,6 +58,7 @@ endif
 ":inoremap <leader>i <Esc>
 :nmap `` <nop>
 :imap `` <Esc>
+tnoremap tt <C-\><C-n>
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -104,7 +110,9 @@ else
 endif
 
 "Always show current position
-set ruler
+if(has('nvim'))
+set noruler
+endif
 
 " Height of the command bar
 "set cmdheight=2
@@ -153,7 +161,7 @@ endif
 
 
 " Add a bit extra margin to the left
-"set nu
+set nu
 set foldcolumn=1
 
 
@@ -466,4 +474,13 @@ endif
 
 "NerdTree Toggle
 nnoremap <Leader><Up> :NERDTreeToggle<CR>
+
+" set font for GUI vim
+if has("gui_running")
+    if has("win32")
+      set guifont=Hack:h9:cANSI:qDRAFT
+    else
+      set guifont=Hack\ 11
+    endif
+endif
 
