@@ -3,7 +3,7 @@ let &packpath = &runtimepath
 
 "Load the plugins
 call plug#begin()
-	Plug 'majutsushi/tagbar'
+"	Plug 'majutsushi/tagbar'
 	Plug 'scrooloose/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'jiangmiao/auto-pairs'
@@ -12,8 +12,10 @@ call plug#begin()
 	Plug 'junegunn/fzf.vim'
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+	"Plugin for GIT commands
 	Plug 'tpope/vim-fugitive'
-"	Plug 'bling/vim-airline'
+
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 "	Plug 'Lenovsky/nuake'

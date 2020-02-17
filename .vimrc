@@ -33,7 +33,11 @@ set mouse-=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Load Packages
 "for NVIM ~/.config/nvim/init.vim has the packages listed
-if !has('nvim')
+if has('nvim')
+	set laststatus=0
+	set statusline=
+	set noruler
+else
 "for VIM ~/.vimplugrc has the packages listed
 	set ttymouse=xterm2
 	" Always show the status line
@@ -106,7 +110,9 @@ else
 endif
 
 "Always show current position
-set ruler
+if(has('nvim'))
+set noruler
+endif
 
 " Height of the command bar
 "set cmdheight=2
@@ -155,7 +161,7 @@ endif
 
 
 " Add a bit extra margin to the left
-"set nu
+set nu
 set foldcolumn=1
 
 
@@ -472,12 +478,15 @@ nnoremap <Leader><Up> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""
 "==> Plugin specific settings
 """""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+let g:airline#extensions#tagbar#enabled = 1
+
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline_theme='random'
+   
+"let g:airline_theme='simple'
 let g:AirlineRefresh=1
-let g:deoplete#enable_at_startup = 1
 
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
