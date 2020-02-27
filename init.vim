@@ -20,9 +20,8 @@ call plug#begin()
 call plug#end()
 
 "Plugin specific settings
-"""""""""""""""""""""""""""""""""""""""""""""""
-" Enable the list of buffers
-" Show just the filename
+let g:deoplete#enable_at_startup = 1
+
 " ********** AIRLINE START *******************
 let g:airline_powerline_fonts = 1
 set t_Co=256
@@ -35,6 +34,8 @@ endif
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '㏑'
+"let g:airline_symbols.linenr = '#'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
@@ -47,7 +48,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:deoplete#enable_at_startup = 1
 
-let ubuntuwin=1
+"let ubuntuwin=1
 if exists('ubuntuwin')
 " airline symbols
 let g:airline_left_sep = '>'
