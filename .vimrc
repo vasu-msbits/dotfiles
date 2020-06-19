@@ -33,7 +33,6 @@ set mouse-=a
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
 	"for NVIM ~/.config/nvim/init.vim has the packages listed
-	tnoremap tt <C-\><C-n>
 else
 	"for VIM ~/.vimplugrc has the packages listed
 	set ttymouse=xterm2
@@ -153,7 +152,7 @@ endif
 
 
 " Add a bit extra margin to the left
-"set nu
+set nu
 set foldcolumn=1
 
 
@@ -269,13 +268,15 @@ map <leader><right> :bnext<cr>
 "nnoremap <C-P> :bprev<CR>
 map <leader><left> :bprevious<cr>
 map <leader>c :Bclose<cr>:bnext<cr>gT
+"map <leader>c :Bclose<cr>:bprevious<cr>gT
 
 " Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+" NOT Using these mappings
+"map <leader>tn :tabnew<cr>
+"map <leader>to :tabonly<cr>
+"map <leader>tc :tabclose<cr>
+"map <leader>tm :tabmove 
+"map <leader>t<leader> :tabnext 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -419,6 +420,18 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-> Terminal Emulation functions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Open Ternminal in a new Buffer TAB and enter insert mode
+nnoremap tt :term<cr> i
+
+"Enter Ternminal mode so that we can close Terminal or Switch to another Buffer
+"tnoremap tt <C-\><C-n>
+tnoremap <ESC> <C-\><C-n>
+"nnoremap tc :Bclose<cr>:bprevious<cr>
 
 
 "NETRW Interface mappings

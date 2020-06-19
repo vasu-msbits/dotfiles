@@ -16,7 +16,8 @@ call plug#begin()
 "	Plug 'bling/vim-airline'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
-"	Plug 'Lenovsky/nuake'
+	Plug 'rust-lang/rust.vim'
+	"	Plug 'Lenovsky/nuake'
 call plug#end()
 
 "Plugin specific settings
@@ -48,7 +49,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:deoplete#enable_at_startup = 1
 
-"let ubuntuwin=1
+#let ubuntuwin=1
 if exists('ubuntuwin')
 " airline symbols
 let g:airline_left_sep = '>'
