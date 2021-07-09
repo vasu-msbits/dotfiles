@@ -8,7 +8,7 @@ call plug#begin()
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'tpope/vim-surround'
-	Plug 'junegunn/fzf'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -49,7 +49,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:deoplete#enable_at_startup = 1
 
-#let ubuntuwin=1
+"let ubuntuwin=1
 if exists('ubuntuwin')
 " airline symbols
 let g:airline_left_sep = '>'
